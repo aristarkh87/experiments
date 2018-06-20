@@ -1,12 +1,7 @@
 image: docker:stable
 
-stages:
-  - build
-  - push
-
 variables:
   DOCKER_DRIVER: overlay2
-  DOCKER_REPO: registry.gitlab.com/aristarkh87/testing
   IMAGE_NAME: testing
   IMAGE_TAG: latest
 
@@ -17,21 +12,6 @@ before_script:
   - docker info
 
 build:
-  stage: build
   script:
     - cd docker
     - docker build -t $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG .
-    - docker save -o $CI_PROJECT_DIR/$IMAGE_NAME-$IMAGE_TAG.tar $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG
-  artifacts:
-    paths: 
-      - $CI_PROJECT_DIR/$IMAGE_NAME-$IMAGE_TAG.tar
-    expire_in: 10 minutes
-
-push:
-  stage: push
-  script:
-    - docker load -i $CI_PROJECT_DIR/$IMAGE_NAME-$IMAGE_TAG.tar
-    - docker login -u $CI_REGISTRY_USER -p $CI_REGISTRY_PASSWORD registry.gitlab.com
-    - docker push $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG
-  only:
-    - master
