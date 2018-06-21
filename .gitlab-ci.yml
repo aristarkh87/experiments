@@ -15,3 +15,8 @@ build:
   script:
     - cd docker
     - docker build -t $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG .
+    - docker save -o $CI_PROJECT_DIR/$IMAGE_NAME-$IMAGE_TAG.tar $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG
+  artifacts:
+    paths: 
+      - $CI_PROJECT_DIR/$IMAGE_NAME-$IMAGE_TAG.tar
+    expire_in: 5 minutes
