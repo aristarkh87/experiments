@@ -13,8 +13,9 @@ script:
   - cd docker
   - docker build -t $IMAGE_NAME:$IMAGE_TAG .
   - docker save -o $TRAVIS_BUILD_DIR/$IMAGE_NAME-$IMAGE_TAG.tar $IMAGE_NAME:$IMAGE_TAG
+  - ls -la $TRAVIS_BUILD_DIR/
 
 addons:
   artifacts:
     paths: 
-      - $TRAVIS_BUILD_DIR/$IMAGE_NAME-$IMAGE_TAG.tar
+      - ${TRAVIS_BUILD_DIR}/${IMAGE_NAME}-${IMAGE_TAG}.tar
