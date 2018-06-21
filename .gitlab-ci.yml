@@ -1,0 +1,8 @@
+image: python:alpine
+
+before_script:
+  - pip anstall ansible
+
+check:
+  script:
+    - ansible-playbook --version
