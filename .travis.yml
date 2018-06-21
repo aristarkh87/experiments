@@ -12,3 +12,9 @@ before_install:
 script:
   - cd docker
   - docker build -t $IMAGE_NAME:$IMAGE_TAG .
+  - docker save -o ./$IMAGE_NAME-$IMAGE_TAG.tar $IMAGE_NAME:$IMAGE_TAG
+
+addons:
+  artifacts:
+    paths: 
+      - ./$IMAGE_NAME-$IMAGE_TAG.tar
