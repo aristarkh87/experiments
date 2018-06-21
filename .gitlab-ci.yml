@@ -1,0 +1,17 @@
+image: docker:stable
+
+variables:
+  DOCKER_DRIVER: overlay2
+  IMAGE_NAME: testing
+  IMAGE_TAG: latest
+
+services:
+  - docker:dind
+
+before_script:
+  - docker info
+
+build:
+  script:
+    - cd docker
+    - docker build -t $CI_REGISTRY_IMAGE/$IMAGE_NAME:$IMAGE_TAG .
