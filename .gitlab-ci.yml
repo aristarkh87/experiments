@@ -1,7 +1,20 @@
 image: alpine
 
+stages:
+  - check
+  - build
+
 before_script:
-    - apk add --no-cache ansible
+  - apk add --no-cache ansible
+  - echo 'before'
+
 check:
+  stage: check
   script:
     - ansible-playbook --syntax-check playbook.yml
+    - echo 'check code'
+
+build:
+  stage: build
+  script:
+    - echo 'build'
