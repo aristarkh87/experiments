@@ -1,8 +1,5 @@
-image: python:alpine
-
-before_script:
-  - pip install ansible
+image: aristarkh87/docker-ansible
 
 check:
   script:
-    - ansible-playbook --version
+    - ansible-lint playbook.yml
