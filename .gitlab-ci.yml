@@ -3,3 +3,4 @@ image: aristarkh87/ansible
 check:
   script:
     - ansible-lint playbook.yml
+    - ansible-playbook --syntax-check playbook.yml
