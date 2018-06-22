@@ -1,5 +1,5 @@
 ---
 - hosts: localhost
-  onnection: local
+  connection: local
   roles:
     - { role: vim, tags: [ 'vim' ] }
