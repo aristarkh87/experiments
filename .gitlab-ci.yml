@@ -1,4 +1,4 @@
-image: aristarkh87/docker-ansible
+image: aristarkh87/ansible
 
 check:
   script:
