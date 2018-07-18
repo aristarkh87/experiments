@@ -2,11 +2,11 @@ language: python
 python: "3.5"
 
 env:
-  - VERSION="2.4"
-  - VERSION="2.5"
+  - VERSION=2.4
+  - VERSION=2.5
 
 install:
   - pip install ansible==${VERSION}
 
 script:
-  - ansible-playbook --syntax-check playbook.yml
+  - ansible-playbook --syntax-check -vvv playbook.yml
