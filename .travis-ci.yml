@@ -1,0 +1,13 @@
+language: python
+python: 3.5
+
+env:
+  version:
+    - 2.4
+    - 2.5
+
+install:
+  - pip install ansible==${version}
+
+script:
+  - ansible-playbook --syntax-check playbook.yml
