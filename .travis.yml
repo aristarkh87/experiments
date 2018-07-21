@@ -5,4 +5,4 @@ services:
 
 script:
   - docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} .
-  - docker-compose help
+  - docker-compose config help
