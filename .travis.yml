@@ -3,19 +3,6 @@ sudo: required
 services:
   - docker
 
-env:
-  - IMAGE_NAME=testimage IMAGE_TAG=latest
-
-before_install:
-  - docker info
-
 script:
-  - cd docker
-  - docker build -t $IMAGE_NAME:$IMAGE_TAG .
-  - docker save -o $TRAVIS_BUILD_DIR/$IMAGE_NAME-$IMAGE_TAG.tar $IMAGE_NAME:$IMAGE_TAG
-  - ls -la $TRAVIS_BUILD_DIR/
-
-addons:
-  artifacts:
-    paths: 
-      - ${TRAVIS_BUILD_DIR}/${IMAGE_NAME}-${IMAGE_TAG}.tar
+  - docker build -t ${TRAVIS_REPO_SLUG}:${TRAVIS_COMMIT} .
+  - docker-compose config
