@@ -1,9 +1,13 @@
 language: python
-python: "3.5"
+python: 
+ - "2.7"
+ - "3.5"
+ - "3.6"
 
 env:
   - VERSION=2.4
   - VERSION=2.5
+  - VERSION=2.2
 
 install:
   - pip install ansible==${VERSION}
