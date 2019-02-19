@@ -5,6 +5,8 @@ python:
 
 install:
   - pip install -r requirements.txt
+  - pip install ansible-lint
 
 script:
   - ansible-playbook -vvv --syntax-check playbook.yml
+  - ansible-lint -v playbook.yml
