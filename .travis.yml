@@ -4,7 +4,7 @@ python:
  - "3.6"
 
 install:
-  - pip install ansible ansible-lint==3.5.1
+  - pip install ansible ansible-lint==4.0.0
 
 script:
   - ansible-playbook -vvv --syntax-check playbook.yml
