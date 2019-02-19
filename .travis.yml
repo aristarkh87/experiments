@@ -4,8 +4,7 @@ python:
  - "3.6"
 
 install:
-  - pip install -r requirements.txt
-  - pip install ansible-lint
+  - pip install ansible ansible-lint
 
 script:
   - ansible-playbook -vvv --syntax-check playbook.yml

@@ -1,19 +1,4 @@
-image: aristarkh87/ansible
-
-stages:
-  - check
-  - build
-
-before_script:
-  - echo 'before'
-
 check:
-  stage: check
+  image: registry.gitlab.com/aristarkh87/docker-ansible-lint
   script:
-    - ansible-playbook --syntax-check playbook.yml
-    - echo 'check code'
-
-build:
-  stage: build
-  script:
-    - echo 'build'
+    - ansible-lint -v playbook.yml
